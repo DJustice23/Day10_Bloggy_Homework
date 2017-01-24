@@ -1,0 +1,38 @@
+<h1>Check out these posts:</h1>
+
+<a href="/posts/new">Add Post</a>
+
+<!--
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= post.title %></li>
+  <% end %>
+</ul>
+-->
+
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Created</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @posts.each do |p| %>
+      <tr>
+        <td>
+          <!-- <%= link_to p.title, "/posts/#{p.id}" %> -->
+          <a href="/posts/<%= p.id %>">
+            <%= p.title %>
+          </a>
+        <td>
+          <%= p.body %>
+        </td>
+        </td>
+        <td><%= p.created_at %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @posts %>
