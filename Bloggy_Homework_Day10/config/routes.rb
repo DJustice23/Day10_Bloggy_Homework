@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  devise_for :users
+
+  root 'posts#all'
+  get '/posts/new' => 'posts#new'
+  get '/posts/:id' => 'posts#show'
+  post '/posts' => 'posts#create'
+  get '/all' => 'posts#all'
+  get 'posts/:id/edit' => 'posts#edit'
+  post 'post/:id/edit' => 'posts#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

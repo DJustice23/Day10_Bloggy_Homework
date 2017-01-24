@@ -1,0 +1,31 @@
+<h1>Create a Post!</h1>
+
+<p>
+  There are <%= Post.count %> posts in the database, and
+  <%= User.count %> users
+</p>
+<p>
+  <% if current_user != nil %>
+      You are <%= current_user.email %>
+
+      <a href="/users/edit">Edit my profile</a>
+
+      <%= form_tag "/users/sign_out", method: :delete do %>
+          <button>Sign Out</button>
+      <% end %>
+
+  <% else %>
+      <p>You are not logged in</p>
+      <a href="/users/sign_in">Log in!</a>
+  <% end %>
+  </p>
+
+  <%= form_tag "/posts" do %>
+      <p>Title</p>
+      <input type="text" name="label">
+
+      <p>Body</p>
+      <input type="text" name="contents">
+
+      <button>Create Post!</button>
+  <% end %>

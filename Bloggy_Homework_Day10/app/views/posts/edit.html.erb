@@ -1,0 +1,21 @@
+<h1>Edit Post</h1>
+
+
+<h2>Current Title: <%= @post.title %></h2>
+
+<h2>Current Body: <%= @post.body %></h2>
+
+
+<%= form_tag "/post/#{@post.id}/edit" do %>
+    <p>New Title</p>
+    <input type="text" name="title" value="<%= @post.title %>">
+
+    <p>New Body</p>
+    <input type="text" name="body" value="<%= @post.body %>">
+
+    <button>Update Post!</button>
+<% end %>
+
+
+
+

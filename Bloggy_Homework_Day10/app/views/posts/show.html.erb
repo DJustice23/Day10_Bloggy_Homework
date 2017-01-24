@@ -1,0 +1,7 @@
+<a href="/all">Back</a>
+
+<h1><%= @post.title %></h1>
+
+<p><%= @post.body %></p>
+
+<%= link_to 'Edit this post', "/posts/#{@post.id}/edit" %>

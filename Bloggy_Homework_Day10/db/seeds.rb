@@ -14,13 +14,21 @@
 # end
 #
 #
+#
+# 5.times do
+#
+#   user = User.create(
+#       name: Faker::Book.author,
+#       email: Faker::Internet.email,
+#       bio: Faker::Hipster.paragraph
+#   )
 
-  5.times do
 
-    user = User.create(
-        name: Faker::Book.author,
-        email: Faker::Internet.email,
-        bio: Faker::Hipster.paragraph
-    )
+20.times do
 
-  end
+  post = Post.create(
+      title: Faker::Hipster.word,
+      body: Faker::Hipster.paragraph
+  )
+
+end
