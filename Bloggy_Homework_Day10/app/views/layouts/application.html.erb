@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>BloggyHomework</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <title>Bloggy Blogz</title>
+  <%= stylesheet_link_tag 'blog.css' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+<h1>Bloggy Blogz</h1>
+
+<% if current_user %>
+    <ul class="blog-nav">
+      <li class="blog-nav-item">Logged in as <a href="/users/edit"><%= current_user.email %></a></li>
+      <li class="blog-nav-item"><%= link_to 'Log out', '/users/sign_out', method: :delete %></li>
+      <li class="blog-nav-item"><a href="/all">Posts</a></li>
+      <li class="blog-nav-item"><a href="/users/<%= current_user.id %>/dashboard">View your Dashboard</a></li>
+    </ul>
+<% else %>
+    <ul class="blog-nav">
+      <li class="blog-nav-item"><a href="/users/sign_up">Sign Up</a></li>
+      <li class="blog-nav-item"><a href="/users/sign_in">Log In</a></li>
+    </ul>
+<% end %>
+
+<div class="container">
+  <%= yield %>
+</div>
+
+<% if Rails.env.development? %>
+    <p><%= params[:controller] %>#<%= params[:action] %></p>
+<% end %>
 
 </body>
 </html>

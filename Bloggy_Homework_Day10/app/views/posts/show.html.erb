@@ -1,7 +1,21 @@
 <a href="/all">Back</a>
 
+<p>Favorites: <%= @post.favoritings.count %></p>
+
 <h1><%= @post.title %></h1>
 
 <p><%= @post.body %></p>
+
+
+<% if current_user.has_favorited?(@post) %>
+    <%= form_tag "/posts/#{@post.id}/favorite", method: :delete do %>
+        <button class="btn btn-danger"> Unfavorite :(</button>
+    <% end %>
+<% else %>
+    <%= form_tag "/posts/#{@post.id}/favorite" do %>
+        <button class="btn btn-default"> Favorite! :)</button>
+    <% end %>
+<% end %>
+
 
 <%= link_to 'Edit this post', "/posts/#{@post.id}/edit" %>

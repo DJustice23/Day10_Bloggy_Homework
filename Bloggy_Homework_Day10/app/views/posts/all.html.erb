@@ -1,20 +1,14 @@
-<h1>Check out these posts:</h1>
+<h1 class="blog-header">Check out these posts:</h1>
 
-<a href="/posts/new">Add Post</a>
+<a class="blog-nav-item" href="/posts/new">Add Post</a>
 
-<!--
-<ul>
-  <% @posts.each do |post| %>
-    <li><%= post.title %></li>
-  <% end %>
-</ul>
--->
 
-<table>
+<table class="blog">
   <thead>
   <tr>
-    <th>Name</th>
-    <th>Created</th>
+    <th>Title</th>
+    <th>Preview</th>
+    <th>Added</th>
   </tr>
   </thead>
   <tbody>
@@ -34,5 +28,7 @@
   <% end %>
   </tbody>
 </table>
+
+
 
 <%= will_paginate @posts %>

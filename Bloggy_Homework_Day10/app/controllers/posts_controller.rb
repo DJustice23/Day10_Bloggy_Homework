@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.create(
         title: params[:label],
-        body: params[:contents]
+        body: params[:contents],
+        author_id: current_user.id
     )
 
     redirect_to "/posts/#{@post.id}"
@@ -31,5 +32,23 @@ class PostsController < ApplicationController
     )
 
     redirect_to "/posts/#{@post.id}"
+  end
+
+  def favorite
+    Favoriting.where(
+        user_id: current_user.id,
+        post_id: params[:id]
+    ).first_or_create
+
+    redirect_to "/posts/#{params[:id]}"
+  end
+
+  def unfavorite
+    Favoriting.where(
+        user_id: current_user.id,
+        post_id: params[:id]
+    ).delete_all
+
+    redirect_to "/posts/#{params[:id]}"
   end
 end

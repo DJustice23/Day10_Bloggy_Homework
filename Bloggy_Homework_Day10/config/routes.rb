@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   get '/all' => 'posts#all'
   get 'posts/:id/edit' => 'posts#edit'
   post 'post/:id/edit' => 'posts#update'
+  post 'posts/:id/favorite' => 'posts#favorite'
+  delete 'posts/:id/favorite' => 'posts#unfavorite'
+  get 'users/:id/dashboard' => 'users#dashboard'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

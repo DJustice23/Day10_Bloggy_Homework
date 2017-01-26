@@ -24,10 +24,18 @@
 #   )
 
 
-20.times do
+10.times do
+  User.create!(
+      email: Faker::Internet.email,
+      password: Faker::LordOfTheRings.character + Faker::Pokemon.name + rand(100 .. 999).to_s
+  )
+end
 
-  post = Post.create(
-      title: Faker::Hipster.word,
+users = User.all
+50.times do
+  Post.create!(
+      author: users.sample,
+      title: Faker::Company.catch_phrase,
       body: Faker::Hipster.paragraph
   )
 
